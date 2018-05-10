@@ -1,11 +1,12 @@
 const { expect } = require('chai');
 
 import Exterminator from '../lib/Exterminator.js';
+import BulletPieces from '../lib/BulletPieces.js';
 
 describe('Exterminator', () => {
   let exterminator;
 
-  beforeEach(() => exterminator = new Exterminator);
+  beforeEach(() => exterminator = new Exterminator(0, 0, 0, 0, 0));
 
   it('should exist', () => expect(exterminator).to.exist);
 
@@ -29,6 +30,19 @@ describe('Exterminator', () => {
   })
 
   it('should have a velocity', () => {
-    expect(exterminator.dx).to.equal(2);
+    expect(exterminator.dx).to.equal(0);
+  })
+
+  it('should populate bullets', () => {
+
+    exterminator.populateBullets();
+    expect(exterminator.bulletsArray[0].radius).to.equal(5)
+  })
+
+  it('should shoot bullets', () => {
+    exterminator.populateBullets();
+    exterminator.moveBullets();
+
+    expect(exterminator.bulletsArray[0].y).to.equal(-13);
   })
 })
