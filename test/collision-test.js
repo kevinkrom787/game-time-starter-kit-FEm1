@@ -6,24 +6,26 @@ import Centipede from '../lib/centipede';
 import Obstacle from '../lib/Obstacle';
 
 
-describe('Collision', () => {
-  let collision;
+describe('Exterminator', () => {
+  let exterminator;
+  let centipede;
+  let obstacle;
 
-  beforeEach(() => collision = new Collision)
-  const exterminator = new Exterminator(10, 10, 30);
-  const centipede = new Centipede(10, 10, 30);
-  const obstacle = new Obstacle(10, 10, 30);
+  beforeEach(() => {
+    exterminator = new Exterminator();
+    centipede = new Centipede(0, 0, 0, 0, 0);
+    obstacle = new Obstacle(0, 0, 0, 0, 0);
+  })
+    
+  it.only('should detect bullet centipede collision', () => {
+    centipede.populate();
+    exterminator.populateBullets();
+    obstacle.populate();
+    Collision.bulletCentipedeCollision(exterminator, centipede, obstacle);
+   
 
-  centipede.populate();
-  obstacle.populate();
-  exterminator.populate();
-  exterminator.moveBullets();
-  obstacle.persist();
-
-  Collision.bulletCentipedeCollision(Exterminator, Centipede, Obstacle);
-
-  it('should detect bullet centipede collision', () => {
-
+    expect(centipede.x && obstacle.x).to.equal(0)
+    expect(centipede.y && obstacle.y).to.equal(0)
   });
   it('should detect bullet mushroom collision', () => {
 
