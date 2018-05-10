@@ -1,41 +1,49 @@
-// const { expect } = require('chai');
+const { expect } = require('chai');
 
-// import Collision from '../lib/Collision';
-// import Exterminator from '../lib/exterminator';
-// import Centipede from '../lib/centipede';
-// import Obstacle from '../lib/Obstacle';
+import collisionDetection from '../lib/collision';
+import Exterminator from '../lib/exterminator';
+import Centipede from '../lib/centipede';
+import Obstacle from '../lib/Obstacle';
+import Segment from '../lib/Segment';
+import BulletPieces from "../lib/BulletPieces";
 
 
-describe('Exterminator', () => {
+describe('Exterminator, Obstacle', () => {
   let exterminator;
   let centipede;
   let obstacle;
 
   beforeEach(() => {
-    exterminator = new Exterminator();
+    exterminator = new Exterminator(0, 0, 0, 0, 0);
     centipede = new Centipede(0, 0, 0, 0, 0);
     obstacle = new Obstacle(0, 0, 0, 0, 0);
+
   })
     
-  it.only('should detect bullet centipede collision', () => {
-    centipede.populate();
-    exterminator.populateBullets();
-    obstacle.populate();
-    Collision.bulletCentipedeCollision(exterminator, centipede, obstacle);
-   
+  it('should detect bullet centipede collision', () => {
 
-    expect(centipede.x && obstacle.x).to.equal(0)
-    expect(centipede.y && obstacle.y).to.equal(0)
-  });
-  it('should detect bullet mushroom collision', () => {
+    //setup
+    obstacle = new Obstacle(0, 0, 0, 0, 0);
+    
+    centipede = new Centipede(10, 10, 0, 0, 0);
+    exterminator = new Exterminator(0, 0, 0, 0, 0);
 
+    centipede.centipedeArray = [new Segment(25, 25), new Segment(150, 150)];
+    
+    exterminator.bulletsArray = [new BulletPieces(25, 25, 0, 0, 0)]
 
+    // action
+    collisionDetection(exterminator, centipede, obstacle);
+
+    // assert
+    
+    expect(centipede.centipedeArray.length).to.equal(1)
+    
 //   });
-//   it('should detect mushroom centipede collision', () => {
 
-//   });
 //   it('should detect exterminator centipede collision', () => {
 
 //   });
 
-// })
+  });
+});

@@ -33,16 +33,4 @@ describe('Centipede', () => {
     expect(centipede.segmentDetectionArray).to.equal(0);
   });
 
-  it('should be able to populate 10 segments', () => {
-
-    centipede.populate()
-    expect(centipede.centipedeArray.length).to.equal(10);
-  })
-
-  it('should move', () => {
-    centipede.populate();
-    centipede.move();
-
-    expect(centipede.centipedeArray[0].x).to.equal(40)
-  });
 })
