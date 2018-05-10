@@ -8,6 +8,7 @@ describe('Obstacle', () => {
 
   beforeEach(() => obstacle = new Obstacle(10,10));
 
+
   it('should have an empty array', () => {
     expect(obstacle.mushroomArray).to.deep.equal([]);
   })

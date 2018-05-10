@@ -1,9 +1,9 @@
-const { expect } = require('chai');
+// const { expect } = require('chai');
 
-import Collision from '../lib/Collision';
-import Exterminator from '../lib/exterminator';
-import Centipede from '../lib/centipede';
-import Obstacle from '../lib/Obstacle';
+// import Collision from '../lib/Collision';
+// import Exterminator from '../lib/exterminator';
+// import Centipede from '../lib/centipede';
+// import Obstacle from '../lib/Obstacle';
 
 
 describe('Exterminator', () => {
@@ -29,12 +29,13 @@ describe('Exterminator', () => {
   });
   it('should detect bullet mushroom collision', () => {
 
-  });
-  it('should detect mushroom centipede collision', () => {
 
-  });
-  it('should detect exterminator centipede collision', () => {
+//   });
+//   it('should detect mushroom centipede collision', () => {
 
-  });
+//   });
+//   it('should detect exterminator centipede collision', () => {
 
-})
+//   });
+
+// })
